@@ -37,9 +37,9 @@ public class ClientController {
     return repo.findById(codigo).get();
   }
 
-  @GetMapping("/clients/ordenado")
-  public Iterable<Client> sortedList(@RequestParam String colum, @RequestParam String direction) {
-    Sort sort = Sort.by(Sort.Direction.fromString(direction), colum);
+  @GetMapping("/clients/sorted")
+  public Iterable<Client> sortedList(@RequestParam String column, @RequestParam String direction) {
+    Sort sort = Sort.by(Sort.Direction.fromString(direction), column);
     return repo.findAll(sort);
   }
 
