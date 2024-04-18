@@ -33,8 +33,8 @@ public class ClientController {
   }
 
   @GetMapping("/clients/{id}")
-  public Client search(@PathVariable long codigo) {
-    return repo.findById(codigo).get();
+  public Client search(@PathVariable long id) {
+    return repo.findById(id).get();
   }
 
   @GetMapping("/clients/sorted")

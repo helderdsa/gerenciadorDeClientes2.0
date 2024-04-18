@@ -1,1 +1,67 @@
-<p>home works!</p>
+<div class="d-flex justify-content-center my-4">
+
+  <button class="btn btn-primary" (click)="navigate('clients/create')">
+    Cadastar Cliente
+  </button>
+
+  <input
+    type="number"
+    placeholder="Pesquisar Id"
+    class="form-control w-75 mx-2"
+    [(ngModel)]="searchId"
+  />
+  <input
+    type="button"
+    value="Buscar"
+    class="btn btn-success w-auto mx-2"
+    (click)="search(searchId)"
+  />
+</div>
+<div class="d-flex justify-content-center">
+  <select name="columnOption" class="form-select w-auto" [(ngModel)]="columnFilter">
+    <option value="name">Nome</option>
+    <option value="age">Idade</option>
+    <option value="city">Cidade</option>
+    <option value="id">Id</option>
+  </select>
+  
+  <select name="directionOption" class="form-select w-auto mx-2" [(ngModel)]="directionFilter">
+    <option value="asc">Crescente</option>
+    <option value="desc">Decrescente</option>
+  </select>
+
+  <input
+    type="button"
+    value="Filtrar"
+    class="btn btn-success w-auto"
+    (click)="sort(columnFilter, directionFilter)"
+  />
+</div>
+
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Cidade</th>
+      <th>Selecionar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let c of clients; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ c.id }}</td>
+      <td>{{ c.name }}</td>
+      <td>{{ c.age }}</td>
+      <td>{{ c.city }}</td>
+      <td>
+        <button class="btn btn-secondary" (click)="navigate('clients/modify/'+c.id)">
+          Selecionar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
